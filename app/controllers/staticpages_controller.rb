@@ -2,7 +2,7 @@ class StaticpagesController < ApplicationController
   require 'flickr'
   def index
     begin
-      flickr = Flickr.new 
+      flickr = Flickr.new ENV["flikr_key"], ENV["flikr_secret"]
     unless params[:user_id].blank?
       begin
       @photos = flickr.people.getPhotos :user_id => params[:user_id]
