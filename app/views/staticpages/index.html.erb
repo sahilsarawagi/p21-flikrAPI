@@ -1,0 +1,12 @@
+<%= form_with url: "/", method: :get, data: {turbo: false} do |form| %>
+  <%= form.label :user_id ,"Search Your user here"  %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Search" %>
+<% end %>
+<% if @photos.blank? %>
+ <div class="one">There are no images to display for this user</div>
+<% else %>
+ <% @photos.each do |photo| %>
+  <%= image_tag(Flickr.url_b(photo), width: "20%") %>
+<% end %>
+<% end %>
